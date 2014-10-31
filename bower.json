@@ -1,0 +1,29 @@
+{
+  "name": "Juliebrookman.com",
+  "version": "0.0.1",
+  "description": "Porfolio site for Julie Brookman",
+  "keywords": [
+    "photography",
+    "art",
+    "glass"
+  ],
+  "authors": [
+    "Kai Conragan"
+  ],
+  "license": "MIT",
+  "homepage": "www.juliebrookman.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-carousel": "~0.3.5",
+    "angular-ui-router": "~0.2.11",
+    "fastclick": "~1.0.3"
+  }
+}
