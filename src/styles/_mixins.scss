@@ -1,0 +1,39 @@
+$breakpoint-extra-small: 20em;    //320px
+$breakpoint-small: 30em;          //480px
+$breakpoint-medium: 37.5em;       //600px
+$breakpoint-extra-medium: 60em;   //960px
+$breakpoint-large: 80em;          //1280px
+$breakpoint-extra-large: 100em;   //1600px
+ 
+ 
+ 
+//=Media Queries Mixin
+//Usually kept in _mixins.scss
+ 
+@mixin bp($canvas) {
+  @if $canvas == XS {
+    @media all and (min-width: $breakpoint-extra-small) {
+      @content;
+    }
+  } @else if $canvas == S {
+    @media all and (min-width: $breakpoint-small) {
+      @content;
+    }
+  } @else if $canvas == M {
+    @media all and (min-width: $breakpoint-medium) {
+      @content;
+    }
+  } @else if $canvas == XM {
+    @media all and (min-width: $breakpoint-extra-medium) {
+      @content;
+    }
+  } @else if $canvas == L {
+    @media all and (min-width: $breakpoint-large) {
+      @content;
+    }
+  } @else if $canvas == XL {
+    @media all and (min-width: $breakpoint-extra-large) {
+      @content;
+    }
+  }
+}

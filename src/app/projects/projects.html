@@ -1,11 +1,20 @@
+<h1 class="page-title">
+  Series
+  <span class="byline">of work</span>
+</h1>
 <ul class="project-list fade"
     data-ng-class="{in:projects.length>7}">
   <li data-ng-repeat="project in projects | orderBy:predicate:reverse"
-      class="project-list-item fade in"
-      style="background-image:url({{project.thumb}});
-             -webkit-animation-delay:{{$index*100}}ms">
-    <a class="project-list-link ripple" data-ripple data-ripple-speed="100" ui-sref="projectDetail({ id: project.id })">
-      <h2 class="project-list-title">{{project.title}}</h2>
+      class="project-list-item fade in">
+    <h2 class="project-list-title">
+      <b>0{{ $index + 1 }}</b> {{project.title}}
+    </h2>
+    <a class="project-list-link ripple"
+       style="background-image:url({{project.thumb}});
+              -webkit-animation-delay:{{$index*100}}ms"
+       data-ripple data-ripple-speed="100"
+       data-ripple-color="#fff"
+       ui-sref="projectDetail({ id: project.id })">
     </a>
   </li>
 </ul>

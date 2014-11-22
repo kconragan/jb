@@ -15,6 +15,63 @@ angular.module('app')
       }
     };
   }])
+  .directive('contactToggle', function() {
+    'use strict';
+    return {
+      link: function(scope, element, attrs) {
+        element.bind('click', function() {
+          $('#app').addClass('is-hidden');
+          $('#contact').addClass('is-visible');
+        })
+      }
+    }
+  })
+  .directive('closeAbout', function() {
+    'use strict';
+    return {
+      link: function(scope, element, attrs) {
+        element.bind('click', function() {
+          $('#app').removeClass('is-hidden');
+          $('#contact').removeClass('is-visible');
+        })
+      }
+    }
+  })
+  .directive('masthead', function ($timeout) {
+    'use strict';
+    return {
+      scope : {
+        bar : '=url'
+      },
+      link : function(scope, element, attributes) {
+        /*
+         *  Basically, we're looking to see when the main
+         *  masthead image loads. Once it does, we fire off a
+         *  series of animations.
+         */
+        var height = $(window).height() + 'px';
+        
+        scope.$watch('bar', function(value){
+          if(value !== undefined) {
+            $('<img/>').attr('src', value).load(function() {
+              $(this).remove(); // prevent memory leaks
+              // Animate container and image
+              // .is-loaded sets of animations for text elements
+              // that are children of .masthead
+              // element.css({'height' : height});
+              element.addClass('is-loaded');
+              // Animate abstract if it exists
+              $('.project-abstract').addClass('is-loaded');
+              $timeout(function() {
+                $('.masthead .more').addClass('bounce-slowly');
+              }, 3500);
+              // Animate image grid
+            });
+          }
+        });
+      }
+    };
+  })
   .directive('closeLightbox', [function () {
     'use strict';
     return {
@@ -23,7 +80,7 @@ angular.module('app')
           $('.lightbox').addClass('is-hidden');
           scope.$apply(function () {
             scope.updateLightbox(0);
-          })
+          });
         });
       }
     };
@@ -62,5 +119,48 @@ angular.module('app')
         });
 
       }
+    };
+  }])
+  .directive("scroll", function ($window) {
+    function getCurrentScroll() {
+      return window.pageYOffset || document.documentElement.scrollTop;
     }
-  }]);
+    return function(scope, element, attrs) {
+      
+      var previousScroll = 0;
+      var scrollCounter  = 0;
+      
+      var $header = $('header.header');
+      angular.element($window).bind("scroll", function() {
+        var currentScroll = $(this).scrollTop();
+        
+        if(currentScroll > previousScroll) {
+          if(currentScroll > 0) {
+            if(!$header.hasClass('is-hidden')) {
+              if(scrollCounter > 0) {
+                $header.addClass('is-hidden');
+                $header.removeClass('is-filled');
+                scrollCounter = 0;
+              }
+            }
+          }
+        }
+        else {
+          console.log('scrolling up');
+          scrollCounter++;
+          if(scrollCounter > 2) {
+            $header.removeClass('is-hidden');
+            if($header.hasClass('transparent')) {
+              if(currentScroll > $(window).height()) {
+                $header.addClass('is-filled');
+              }
+              else {
+                $header.removeClass('is-filled');
+              }
+            }
+          }
+        }
+        previousScroll = getCurrentScroll();
+      });
+    };
+});

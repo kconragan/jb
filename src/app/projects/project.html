@@ -1,7 +1,13 @@
 <div class="masthead"
+     masthead="{{masthead}}"
+     url="masthead"
      style="background-image: url({{masthead}})">
   <div class="project-description">
     <h1 class="project-title">{{ title }}</h1>
+    <h2 class="project-byline">23 collected works</h2>
+    <a class="more-container">
+      <div class="more"></div>
+    </a>
   </div>
 </div>
 
@@ -15,11 +21,14 @@
   </ul>
 </div>
 
-<p class="project-abstract"
-   ng-text-truncate="description"
-   ng-tt-words-threshold="25"></p>
-<h2 class="sub-title">Arwork</h2>
-<ul class="artwork-list">
+<div data-ng-if="description">
+  <p class="project-statement"
+     ng-text-truncate="description"
+     ng-tt-words-threshold="100"></p>
+  <!-- <p class="project-statement">{{description}}</p> -->
+  <h2 class="sub-title">Artwork</h2>
+</div>
+<ul class="artwork-list g">
   <li data-ng-repeat="photo in photos"
       data-ripple
       class="artwork-list-item ripple">

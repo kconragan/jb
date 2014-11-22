@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="14px" height="12px" viewBox="0 0 14 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch Beta 3.2 (9961) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 1 + Fill 204</title>
+    <desc>Created with Sketch Beta.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Rectangle-1-+-Fill-204" sketch:type="MSLayerGroup" transform="translate(-5.000000, -6.000000)">
+            <rect id="Rectangle-1" sketch:type="MSShapeGroup" x="0" y="0" width="24" height="24"></rect>
+            <path d="M18,6 L6,6 C5.45,6 5,6.49090909 5,7.09090909 L5,16.9090909 C5,17.5090909 5.45,18 6,18 L18,18 C18.55,18 19,17.5090909 19,16.9090909 L19,7.09090909 C19,6.49090909 18.55,6 18,6 L18,6 Z M17,9.81818182 L12,13.0909091 L7,9.81818182 L7,8.18181818 L12,11.4545455 L17,8.18181818 L17,9.81818182 L17,9.81818182 Z" id="Fill-204" fill="#4A4A4A" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

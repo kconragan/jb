@@ -11,7 +11,6 @@ angular.module('projects', [])
       var size = size || 's1280';
       var tempUrl = id.split('/');
       var url = tempUrl[0] + '//' + tempUrl[2] + '/' + tempUrl[3] + '/' + tempUrl[4] + '/' + tempUrl[5] + '/' + tempUrl[6] + '/s1280/' + tempUrl[7];
-      console.log(url);
       return url
     }
 
@@ -36,7 +35,6 @@ angular.module('projects', [])
           // deterministic way to establish sorting
           _.sortBy(projects, function (obj) {
             var d = new Date(obj.updated.$t);
-            console.log(d.getTime());
             return d.getTime();
           }).reverse();
           
@@ -59,7 +57,6 @@ angular.module('projects', [])
             $http.get(album.thumbUrl).success(function(response) {
               // album.thumb = response.feed.entry[0].content.src;
               album.thumb = _createPiasaPhotoUrl(response.feed.entry[0].content.src);
-              console.log('thumb url is ', album.thumb);
               albums.push(album);
             })
             .error(function(e) {
@@ -84,7 +81,6 @@ angular.module('projects', [])
         var albumURL = 'https://picasaweb.google.com/data/feed/api/user/' + GOOGLEID + '/albumid/' + id + '?alt=json&?imgmax=912';
         var deferred = $q.defer();
         $http.get(albumURL).success(function(data) {
-          console.log(data);
           project.title = data.feed.title.$t;
           project.masthead = _createPiasaPhotoUrl(data.feed.entry[0].content.src);
           var photos = [];

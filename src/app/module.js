@@ -1,6 +1,6 @@
 angular.module('app', [
   'ui.router',
-  // 'ngAnimate',
+  'ngAnimate',
   'angular-carousel',
   'templatescache',
   'ngTextTruncate',
