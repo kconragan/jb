@@ -31,11 +31,19 @@
   <div id="app">
     <header role="banner" class="header" data-ng-class="{ 'transparent': layoutConfig.fullBleed }">
       <img src="img/static/logo.svg" class="svg-inject logo" />
-      <h1 class="name ripple" data-ripple data-ripple-color="#ccc"><a href="/">Julie Brookman</a></h1>
+      <h1 class="name ripple" data-ripple data-ripple-color="#ccc">
+        <a href="/">Julie Brookman</a>
+      </h1>
       <nav id="nav">
         <ul class="nav">
           <li>
-            <img src="img/static/contact.svg" class="contact svg-inject" alt="Get in touch">
+            <a href="javascript:void(0)"
+               data-contact-toggle
+               data-ripple>
+              <img src="img/static/contact.svg"
+                   data-contact-toggle
+                   alt="Get in touch">
+               </a>
           </li>
         </ul>
       </nav>
@@ -45,6 +53,10 @@
   <aside id="contact" role="contact">
     <div class="wrap">
       <div class="inner">
+        <button class="btn-close ripple"
+                data-ripple
+                data-close-about>
+        </button>
         <img id="portrait" src="http://photos-f.ak.instagram.com/hphotos-ak-xpa1/924794_1436048849941077_766540282_n.jpg" width="120" alt="">
         <h1 class="title">Julie Brookman</h1>
         <h2 class="byline">Lives and works in Moss Beach, CA</h2>
