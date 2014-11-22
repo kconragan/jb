@@ -487,9 +487,9 @@ h4 {
     transform: scale3d(0.9, 0.9, 0.9); }
 
 #contact {
-  position: fixed;
-  visibility: hidden;
   display: table;
+  visibility: hidden;
+  position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
@@ -525,16 +525,10 @@ h4 {
     cursor: default;
     max-width: 600px;
     margin: 0 auto;
-    padding: 24px 24px 64px;
+    padding: 24px;
     text-align: center;
     background-color: #F1F2F3;
-    -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0 1px 1px;
-    -moz-box-shadow: rgba(0, 0, 0, 0.4) 0 1px 1px;
     box-shadow: rgba(0, 0, 0, 0.4) 0 1px 1px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    -ms-border-radius: 2px;
-    -o-border-radius: 2px;
     border-radius: 2px;
     border-top: 3px solid #E2BF36;
     -webkit-transform: scale3d(0.7, 0.7, 0.7);
@@ -579,36 +573,42 @@ h4 {
   #contact .sub-header {
     font-size: 1em;
     font-weight: bold;
-    margin: 0 auto; }
-  #contact .sub-header + p {
-    margin-top: 0; }
+    margin: 0 auto 16px; }
   #contact .btn-close {
-    color: #676767; }
+    color: #676767;
+    margin-top: -24px;
+    margin-right: -12px; }
 
-.mc-field-group {
-  margin-bottom: 1em; }
-  .mc-field-group label {
-    display: block; }
-  .mc-field-group .asterisk {
-    display: none; }
-  .mc-field-group input[type=text], .mc-field-group input[type=email] {
-    border: 1px solid #676767;
-    padding: 8px;
-    color: #676767; }
+.mc-field-group input[type=text], .mc-field-group input[type=email] {
+  box-sizing: border-box;
+  border: 1px solid #676767;
+  padding: 8px;
+  color: #676767; }
+  @media all and (min-width: 20em) {
+    .mc-field-group input[type=text], .mc-field-group input[type=email] {
+      width: 100%;
+      margin-bottom: 1em; } }
+  @media all and (min-width: 30em) {
+    .mc-field-group input[type=text], .mc-field-group input[type=email] {
+      width: 44%; } }
 
 #portrait {
   display: block;
   margin: 24px auto 16px auto; }
 
-#btn-email {
+#btn-email, input[type=submit] {
   margin: 16px auto;
   display: inline-block;
   padding: 8px 16px;
   background-color: #E2BF36;
   color: #F1F2F3;
   text-decoration: none;
+  border: 0;
   border-radius: 2px;
   box-shadow: inset 0 -2px 0 0 rgba(0, 0, 0, 0.2); }
+
+input[type=submit] {
+  margin-top: 0; }
 
 /*
  * PROJECT LIST PAGE
@@ -812,7 +812,7 @@ ul.lightbox {
   border: none;
   outline: none;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 27px;
+  font-size: 48px;
   display: inline-block;
   line-height: 0px;
   width: 48px;

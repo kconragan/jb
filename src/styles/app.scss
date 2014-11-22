@@ -198,9 +198,9 @@ h4 {font-size: 1.414em;}
 }
 
 #contact {
-  position: fixed;
-  visibility: hidden;
   display: table;
+  visibility: hidden;
+  position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
@@ -209,18 +209,18 @@ h4 {font-size: 1.414em;}
   background-color: rgba(37,41,52,0.7);
   opacity: 0;
   -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+     -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+       -o-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
   -webkit-transition-property: opacity,visibility;
-  -moz-transition-property: opacity,visibility;
-  -o-transition-property: opacity,visibility;
-  transition-property: opacity,visibility;
+     -moz-transition-property: opacity,visibility;
+       -o-transition-property: opacity,visibility;
+          transition-property: opacity,visibility;
   -webkit-transition-duration: 0.6s;
-  -moz-transition-duration: 0.6s;
-  -o-transition-duration: 0.6s;
-  transition-duration: 0.6s;
+     -moz-transition-duration: 0.6s;
+       -o-transition-duration: 0.6s;
+          transition-duration: 0.6s;
   
   .wrap {
     display: table-cell;
@@ -228,10 +228,10 @@ h4 {font-size: 1.414em;}
     vertical-align: middle;
     cursor: pointer;
     -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
   }
   
   .inner {
@@ -239,31 +239,25 @@ h4 {font-size: 1.414em;}
     cursor: default;
     max-width: 600px;
     margin: 0 auto;
-    padding: 24px 24px 64px;
+    padding: 24px;
     text-align: center;
     background-color: $lightgrey;
-    -webkit-box-shadow: rgba(0,0,0,0.4) 0 1px 1px;
-    -moz-box-shadow: rgba(0,0,0,0.4) 0 1px 1px;
     box-shadow: rgba(0,0,0,0.4) 0 1px 1px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    -ms-border-radius: 2px;
-    -o-border-radius: 2px;
     border-radius: 2px;
     border-top: 3px solid $accent;
     -webkit-transform: scale3d(0.7, 0.7, 0.7);
-    -moz-transform: scale3d(0.7, 0.7, 0.7);
-    -ms-transform: scale3d(0.7, 0.7, 0.7);
-    -o-transform: scale3d(0.7, 0.7, 0.7);
-    transform: scale3d(0.7, 0.7, 0.7);
+       -moz-transform: scale3d(0.7, 0.7, 0.7);
+        -ms-transform: scale3d(0.7, 0.7, 0.7);
+         -o-transform: scale3d(0.7, 0.7, 0.7);
+            transform: scale3d(0.7, 0.7, 0.7);
     -webkit-transition-property: all;
-    -moz-transition-property: all;
-    -o-transition-property: all;
-    transition-property: all;
+       -moz-transition-property: all;
+         -o-transition-property: all;
+            transition-property: all;
     -webkit-transition-duration: 0.4s;
-    -moz-transition-duration: 0.4s;
-    -o-transition-duration: 0.4s;
-    transition-duration: 0.4s;
+       -moz-transition-duration: 0.4s;
+        -o-transition-duration: 0.4s;
+           transition-duration: 0.4s;
     opacity: 0;
   }
   
@@ -305,35 +299,33 @@ h4 {font-size: 1.414em;}
   .sub-header {
     font-size: 1em;
     font-weight: bold;
-    margin: 0 auto;
-  }
-  
-  .sub-header + p {
-    margin-top: 0;
+    margin: 0 auto 16px;
   }
   
   .btn-close {
     color: $mediumgrey;
+    margin-top: -24px;
+    margin-right: -12px;
   }
   
 }
 
 .mc-field-group {
-  margin-bottom: 1em;
-  
-  label {
-    display: block;
-  }
-  
-  .asterisk {
-    display: none;
-  }
   
   input[type=text],
   input[type=email] {
+    box-sizing: border-box;
     border: 1px solid $mediumgrey;
     padding: 8px;
     color: $mediumgrey;
+    
+    @include bp(XS) {
+      width: 100%;
+      margin-bottom: 1em;
+    }
+    @include bp(S) {
+      width: 44%;
+    }
   }
 }
 
@@ -342,15 +334,21 @@ h4 {font-size: 1.414em;}
   margin: 24px auto 16px auto;
 }
 
-#btn-email {
+#btn-email,
+input[type=submit] {
   margin: 16px auto;
   display: inline-block;
   padding: 8px 16px;
   background-color: $accent;
   color: $lightgrey;
   text-decoration: none;
+  border: 0;
   border-radius: 2px;
   box-shadow: inset 0 -2px 0 0 rgba(0,0,0,0.20);
+}
+
+input[type=submit] {
+  margin-top: 0;
 }
 
 
@@ -595,7 +593,7 @@ ul.lightbox {
   border: none;
   outline: none;
   color: rgba(255,255,255,0.6);
-  font-size: 27px;
+  font-size: 48px;
   display: inline-block;
   line-height: 0px;
   width: 48px;
