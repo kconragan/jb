@@ -528,7 +528,8 @@ input[type=submit] {
     max-width: 95%;
     position: relative;
     top: 50%;
-    transform: translateY(-70%);
+    -webkit-transform: translateY(-70%);
+            transform: translateY(-70%);
   }
 }
 
@@ -578,12 +579,14 @@ ul.lightbox {
 
 .rn-carousel-control-next:before {
   right: 8px;
-  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 
 .rn-carousel-control-prev:before {
   left: 8px;
-  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+          transform: rotate(-135deg);
 }
 
 .btn-close {

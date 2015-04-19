@@ -47,8 +47,12 @@ angular.module('MyApp', ['angular-carousel']);
  - `rn-carousel-buffered` add this attribute to enable the carousel buffering, good to minimize the DOM (5 slides)
  - `rn-carousel-controls` add this attribute to enable builtin prev/next buttons (you can override by CSS)
  - `rn-carousel-auto-slide` add this attribute to make the carousel slide automatically after given seconds (default=3)
- - `rn-carousel-transition` : transition type, can be one of `slide, zoom, hexagon, slideAndFade, none`. (default=slide)
+ - `rn-carousel-transition` : transition type, can be one of `slide, zoom, hexagon, fadeAndSlide, none`. (default=slide)
  - `rn-carousel-locked`: two way binding boolean that lock/unlock the carousel
+ - `rn-carousel-deep-watch`: Deep watch the collection which enable to dynamically add slides at beginning without corrupting position
+ - `rn-carousel-easing`: add this attritube to specify a formula for easing, these can be found in the (https://github.com/jeremyckahn/shifty/blob/master/src/shifty.formulas.js)[shifty
+ library] (default=easeIn)
+ - `rn-carousel-duration`: add this attritube to set the duration of the transition (default=300)
 
 ## Indicators
 
@@ -66,13 +70,12 @@ You can add position indicators by adding this directive where you want :
  - angular-carousel use the great [shifty.js](https://github.com/jeremyckahn/shifty) for the animations
 
 ## Todo :
- - disable autoslide on hover
  - delay autoslide on indicators click/move
  - customisable transitions
  - more transition types
  - infinite loop support
 
-## Contributing 
+## Contributing
  - Please follow [AngularJS GIT conventions](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#)
  - Please add tests
  - Please update the README and demo (index.html)

@@ -41,6 +41,8 @@ angular.module('projects', [])
           // Organize each project
           _.each(projects, function(data) {
             
+            console.log(data);
+            
             var album = {};
             
             album.id       = data.gphoto$id.$t;
@@ -81,34 +83,45 @@ angular.module('projects', [])
         var albumURL = 'https://picasaweb.google.com/data/feed/api/user/' + GOOGLEID + '/albumid/' + id + '?alt=json&?imgmax=912';
         var deferred = $q.defer();
         $http.get(albumURL).success(function(data) {
-          project.title = data.feed.title.$t;
-          project.masthead = _createPiasaPhotoUrl(data.feed.entry[0].content.src);
-          var photos = [];
-          for (var i = 0; i < data.feed.entry.length; i++) {
+          
+          // Amazingly, we don't get the album summary from this API.
+          // We have to retrieve all albums in order to get this info
+          // and then compare to the current id
+
+          $http.get(albumsURL).success(function(albums){
+            var feed = albums.feed.entry;
             
-            var item = data.feed.entry[i];
+            _.each(feed, function(entry) {
+              if(entry.gphoto$id.$t === id) {
+                project.description = entry.summary.$t;
+                console.log(project.description);
+              }
+            });
             
-            // See if an image has a caption. If so, use as album decscription.
-            // This is super hacky. I need to find a way to allow album-level
-            // descriptions but it doesn't come back in the picasweb api.
+            // With album description, build rest of object
+            project.title    = data.feed.title.$t;
+            project.masthead = _createPiasaPhotoUrl(data.feed.entry[0].content.src);
+            var photos       = [];
             
-            if (item.summary.$t !== '' && project.description !== '') {
-              project.description = item.summary.$t;
+            for (var i = 0; i < data.feed.entry.length; i++) {
+              
+              var item = data.feed.entry[i];
+              
+              var tempUrl = item.content.src.split('/');
+
+              var url = tempUrl[0] + '//' + tempUrl[2] + '/' + tempUrl[3] + '/' + tempUrl[4] + '/' + tempUrl[5] + '/' + tempUrl[6] + '/w1200-h1200-c/' + tempUrl[7];
+              var bigUrl = tempUrl[0] + '//' + tempUrl[2] + '/' + tempUrl[3] + '/' + tempUrl[4] + '/' + tempUrl[5] + '/' + tempUrl[6] + '/s1640/' + tempUrl[7];
+              item.url = url;
+              item.bigUrl = bigUrl;
+              
+              photos.push(item);
             }
-            
-            var tempUrl = item.content.src.split('/');
 
-            var url = tempUrl[0] + '//' + tempUrl[2] + '/' + tempUrl[3] + '/' + tempUrl[4] + '/' + tempUrl[5] + '/' + tempUrl[6] + '/w1200-h1200-c/' + tempUrl[7];
-            var bigUrl = tempUrl[0] + '//' + tempUrl[2] + '/' + tempUrl[3] + '/' + tempUrl[4] + '/' + tempUrl[5] + '/' + tempUrl[6] + '/s1640/' + tempUrl[7];
-            item.url = url;
-            item.bigUrl = bigUrl;
-            
-            photos.push(item);
-          }
+            project.photos = photos;
 
-          project.photos = photos;
-
-          deferred.resolve(project);
+            deferred.resolve(project);
+          });
+          
           // return result.data;
         })
         .error(function() {

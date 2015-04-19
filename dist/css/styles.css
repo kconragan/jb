@@ -757,6 +757,7 @@ input[type=submit] {
     max-width: 95%;
     position: relative;
     top: 50%;
+    -webkit-transform: translateY(-70%);
     transform: translateY(-70%); }
 
 ul.lightbox {
@@ -799,10 +800,12 @@ ul.lightbox {
 
 .rn-carousel-control-next:before {
   right: 8px;
+  -webkit-transform: rotate(45deg);
   transform: rotate(45deg); }
 
 .rn-carousel-control-prev:before {
   left: 8px;
+  -webkit-transform: rotate(-135deg);
   transform: rotate(-135deg); }
 
 .btn-close {

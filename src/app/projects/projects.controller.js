@@ -27,9 +27,11 @@ angular.module('app')
       $scope.description    = data.description;
       $scope.masthead       = data.masthead;
       $scope.photos         = data.photos;
+      $scope.count          = data.photos.length;
     });
     
     $scope.updateLightbox = function(index) {
-      $scope.currentArtwork = index;
+      console.log(typeof(index));
+      $scope.currentArtwork = parseInt(index);
     }
 })

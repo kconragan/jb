@@ -5,8 +5,10 @@ angular.module('app')
       link: function (scope, element, attrs) {
         element.bind('click', function () {
           scope.$apply(function () {
-            // scope.updateLightbox(attrs.currentIndex);
-            scope.currentArtwork = attrs.currentIndex;
+            if(scope.currentArtwork !== attrs.currentIndex) {
+              scope.updateLightbox(attrs.currentIndex);
+            }
+            // scope.currentArtwork = attrs.currentIndex;
             $('.lightbox').removeClass('is-hidden');
           });
           $timeout(function () {

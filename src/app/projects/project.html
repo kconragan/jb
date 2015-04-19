@@ -4,17 +4,18 @@
      style="background-image: url({{masthead}})">
   <div class="project-description">
     <h1 class="project-title">{{ title }}</h1>
-    <h2 class="project-byline">23 collected works</h2>
+    <h2 class="project-byline">{{ count }} collected works</h2>
     <a class="more-container">
       <div class="more"></div>
     </a>
   </div>
 </div>
-
 <div class="lightbox is-hidden">
+{{currentArtwork}}
   <button class="btn-close ripple" data-ripple data-close-lightbox></button>
   <ul class="lightbox" rn-carousel rn-carousel-controls rn-carousel-index="currentArtwork">
-    <li data-ng-repeat="photo in photos">
+    <li data-ng-repeat="photo in photos"
+        data-ng-class="'id-' + photo.id">
       <div class="lightbox-item"></div>
         <img src="{{ photo.bigUrl }}" alt="">
       </li>
